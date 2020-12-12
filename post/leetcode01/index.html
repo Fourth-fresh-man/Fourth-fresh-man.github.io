@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Leetcode刷题-01 左旋转字符串 | 个人博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Fourth-fresh-man.github.io/favicon.ico?v=1607741858697">
+<link rel="stylesheet" href="https://Fourth-fresh-man.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="难度: easy
+题目
+字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串&quot;abcdefg&quot;和数字2，该函数将返回左旋转两位得到的结果&quot;c..." />
+    <meta name="keywords" content="字符串,力扣,简单" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Fourth-fresh-man.github.io">
+        <img src="https://Fourth-fresh-man.github.io/images/avatar.png?v=1607741858697" class="site-logo">
+        <h1 class="site-title">个人博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      没有真理，只有解释
+    </div>
+    <div class="site-footer">
+      Just talk the code | <a class="rss" href="https://Fourth-fresh-man.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Leetcode刷题-01 左旋转字符串</h2>
+            <div class="post-date">2020-12-09</div>
+            
+            <div class="post-content" v-pre>
+              <h3 id="难度-easy"><em>难度:</em> easy</h3>
+<h1 id="题目">题目</h1>
+<p>字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串&quot;abcdefg&quot;和数字2，该函数将返回左旋转两位得到的结果&quot;cdefgab&quot;。</p>
+<!-- more -->
+<p>示例 1：</p>
+<pre><code>输入: s = &quot;abcdefg&quot;, k = 2
+输出: &quot;cdefgab&quot;
+</code></pre>
+<p>示例 2：</p>
+<pre><code>输入: s = &quot;lrloseumgh&quot;, k = 6
+输出: &quot;umghlrlose&quot;
+</code></pre>
+<p>限制：<br>
+1 &lt;= k &lt; s.length &lt;= 10000</p>
+<h2 id="思路">思路</h2>
+<h3 id="方法一-字符串切片">方法一 字符串切片</h3>
+<p>利用Java的字符串API来实现</p>
+<pre><code class="language-java">public static String round_str1(String str, int num){
+        // 分成0-n和n-str.length两个长度字符串，并拼接
+        return str.substring(num, str.length())+str.substring(0,num);
+}
+</code></pre>
+<h3 id="方法二-列表遍历">方法二 列表遍历</h3>
+<p>利用列表获取字符串指定位置元素</p>
+<pre><code class="language-java">public static String round_str2(String str, int num){
+    // 利用空字符串构造器，将str指定位置上的字符逐个传入
+    StringBuilder res = new StringBuilder();
+    for (int i = num; i &lt; str.length(); i++) {
+        res.append(str.charAt(i));
+    }
+    for (int i = 0; i &lt; num; i++) {
+        res.append(str.charAt(i));
+    }
+    // 返回新字符串
+    return res.toString();
+}
+</code></pre>
+<h4 id="墙裂推荐求余计算">墙裂推荐！求余计算</h4>
+<p>简化代码</p>
+<pre><code class="language-java">public static String round_str2(String str, int num){
+    StringBuilder res = new StringBuilder();
+    for (int i = num; i &lt; num + str.length(); i++){
+        res.append(str.charAt(i%num));
+    }
+    return res.toString();
+}
+</code></pre>
+<h3 id="方法三-字符串遍历拼接">方法三 字符串遍历拼接</h3>
+<pre><code class="language-java">public static String round_str(String str, int num){
+    String res = &quot;&quot;;
+    for (int i = num; i &lt; num + str.length(); i++) {
+        res+=str.charAt(i % str.length());
+    }
+    return res;
+}
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://Fourth-fresh-man.github.io/tag/-MVb5HIy3/" class="tag">
+                    字符串
+                  </a>
+                
+                  <a href="https://Fourth-fresh-man.github.io/tag/HigM_jpiFh/" class="tag">
+                    力扣
+                  </a>
+                
+                  <a href="https://Fourth-fresh-man.github.io/tag/lDiFsYNPiJ/" class="tag">
+                    简单
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Fourth-fresh-man.github.io/post/hadoop/">
+                  <h3 class="post-title">
+                    hadoop
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>

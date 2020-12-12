@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Fourth-fresh-man.github.io</id>
     <title>个人博客</title>
-    <updated>2020-12-09T07:46:59.307Z</updated>
+    <updated>2020-12-12T02:57:40.762Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Fourth-fresh-man.github.io"/>
     <link rel="self" href="https://Fourth-fresh-man.github.io/atom.xml"/>
@@ -10,6 +10,21 @@
     <logo>https://Fourth-fresh-man.github.io/images/avatar.png</logo>
     <icon>https://Fourth-fresh-man.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 个人博客</rights>
+    <entry>
+        <title type="html"><![CDATA[Leetcode刷题-01 左旋转字符串]]></title>
+        <id>https://Fourth-fresh-man.github.io/post/leetcode01/</id>
+        <link href="https://Fourth-fresh-man.github.io/post/leetcode01/">
+        </link>
+        <updated>2020-12-09T12:34:56.000Z</updated>
+        <summary type="html"><![CDATA[<h3 id="难度-easy"><em>难度:</em> easy</h3>
+<h1 id="题目">题目</h1>
+<p>字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串&quot;abcdefg&quot;和数字2，该函数将返回左旋转两位得到的结果&quot;cdefgab&quot;。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h3 id="难度-easy"><em>难度:</em> easy</h3>
+<h1 id="题目">题目</h1>
+<p>字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串&quot;abcdefg&quot;和数字2，该函数将返回左旋转两位得到的结果&quot;cdefgab&quot;。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[hadoop]]></title>
         <id>https://Fourth-fresh-man.github.io/post/hadoop/</id>
