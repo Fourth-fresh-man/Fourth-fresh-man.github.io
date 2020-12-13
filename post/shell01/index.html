@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Shell脚本 基础 - 01 | 个人博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Fourth-fresh-man.github.io/favicon.ico?v=1607819078456">
+<link rel="stylesheet" href="https://Fourth-fresh-man.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="shell是我在实习时候经常会用的语言，一般在项目提供部署，领导要求一些好看的报表时候用的比较多，目前我用shell大概3个月，只会用一些很普通的命令，其实在网上查阅资料的时候就发现了shell许多nb的用法，特此一一记录下来。
+
+shel..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Fourth-fresh-man.github.io">
+        <img src="https://Fourth-fresh-man.github.io/images/avatar.png?v=1607819078456" class="site-logo">
+        <h1 class="site-title">个人博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      没有真理，只有解释
+    </div>
+    <div class="site-footer">
+      Just talk the code | <a class="rss" href="https://Fourth-fresh-man.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Shell脚本 基础 - 01</h2>
+            <div class="post-date">2020-12-12</div>
+            
+            <div class="post-content" v-pre>
+              <p>shell是我在实习时候经常会用的语言，一般在项目提供部署，领导要求一些好看的报表时候用的比较多，目前我用shell大概3个月，只会用一些很普通的命令，其实在网上查阅资料的时候就发现了shell许多nb的用法，特此一一记录下来。</p>
+<!-- more -->
+<h2 id="shell脚本的定义">shell脚本的定义</h2>
+<p>shell脚本默认是用户使用linux的桥梁，底层使用C语言实现。<br>
+bash默认是shell脚本执行的解释器,每次编写shell时，我都会将其加在头文件，告诉系统这是一个shell脚本，这样创建时无需指定.sh格式。</p>
+<pre><code class="language-sh">#!/bin/bash
+</code></pre>
+<h2 id="shell脚本执行">shell脚本执行</h2>
+<p>我每次创建完后，都会</p>
+<pre><code class="language-sh">chmod +x xxx
+</code></pre>
+<p>这样，可以用<code>./xxx</code>方式来执行脚本，也可以赋予更高权限<br>
+这里还有个<code>小技巧</code>，在根目录下创建bin，把脚本放在bin里，可以全局快速使用。</p>
+<h2 id="shell多行与单行注释">shell多行与单行注释</h2>
+<pre><code class="language-sh"># 这是单行注释
+</code></pre>
+<pre><code class="language-sh">:&lt;&lt;!
+多行注释
+多行注释
+多行注释
+!
+</code></pre>
+<h2 id="shell脚本与其他程序设计语言的差异和共性">shell脚本与其他程序设计语言的差异和共性</h2>
+<p>shell 针对字符串和数字的处理非常智能，至少比Java要快的多。</p>
+<h3 id="shell变量赋值">shell变量赋值</h3>
+<p>shell变量赋值和Java不太像，和python比较像<br>
+比如字符串赋值：<br>
+shell是这样</p>
+<pre><code class="language-sh">name=&quot;world&quot;
+</code></pre>
+<p>python是这样</p>
+<pre><code class="language-python">name=&quot;world&quot;
+</code></pre>
+<p>Java是这样</p>
+<pre><code class="language-java">String name = &quot;world&quot;
+</code></pre>
+<p><code>变量名的命名请按照公司规范</code><br>
+可见变量上，python不少地方是借鉴shell的，按照guido的说法，他是想做一门语言既有c的速度，又有shell的简洁，可惜python做项目实在太难受～当然这是我在公司实习得出的看法。</p>
+<h3 id="shell变量使用">shell变量使用</h3>
+<h4 id="shell回显与print"><strong>shell回显与print</strong></h4>
+<p>echo和print都有用到的地方，我用的最多是echo，因为</p>
+<h4 id="shell变量权限设置和删除"><strong>shell变量权限设置和删除</strong></h4>
+<p><code>readonly 变量名</code>将会使变量变成只读变量，也就意味着如果后面想要更改此变量，将会报错<br>
+<code>unset 变量名</code>会删除该变量，变量将永远消失，但他不能删掉只读变量(readonly)</p>
+<h4 id="shell字符串"><strong>shell字符串</strong></h4>
+<p>shell字符串尽量使用双引号，依据我在项目实施的经验，这样可以避免很多语义上的问题，还有就是引用变量的时候，用花括号<code>${}</code>会使代码结构更清晰</p>
+<pre><code class="language-sh"># 拼接字符串，双引号和单引号区别
+your_name=&quot;runoob&quot;
+# 使用双引号拼接
+greeting=&quot;hello, &quot;$your_name&quot; !&quot;
+greeting_1=&quot;hello, ${your_name} !&quot;
+echo $greeting  $greeting_1
+# 使用单引号拼接
+greeting_2='hello, '$your_name' !'
+greeting_3='hello, ${your_name} !'
+echo $greeting_2  $greeting_3
+</code></pre>
+<pre><code>输出结果为：
+hello, runoob ! hello, runoob !
+hello, runoob ! hello, ${your_name} !
+</code></pre>
+<p>获取字符串长度，<code>#</code>将会把后面的元素作为一个可读字符串对象，获取其长度</p>
+<pre><code class="language-sh">string=&quot;abcd&quot;
+echo ${#string}
+</code></pre>
+<pre><code>结果为：6
+</code></pre>
+<p>在数组上就体现为</p>
+<pre><code class="language-sh">name=(
+    usa
+    cn
+    uk
+)
+for country in name;
+do
+    echo ${#country}
+done
+</code></pre>
+<p>将每个数组元素当成可读对象，分别取长度，用<code>echo $</code>取值</p>
+<pre><code class="language-sh"># 提取子字符串
+str=&quot;this is a string&quot;
+echo ${string:0:3} # 输出this
+</code></pre>
+<pre><code class="language-sh"># 查找子字符串，查找字符i或o的位置，输出最先出现的那个
+str=&quot;this is a string&quot;
+echo `expr index &quot;$str&quot; io` # 输出3
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Fourth-fresh-man.github.io/post/leetcode05/">
+                  <h3 class="post-title">
+                    Leetcode刷题 - 05 替换空格
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'dcf0ce4e8e91f4176dfe',
+        clientSecret: '09c794543612d3535f93b2aef3051781914cd1e6',
+        repo: 'Fourth-fresh-man.github.io',
+        owner: 'Fourth-fresh-man',
+        admin: ['Fourth-fresh-man'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

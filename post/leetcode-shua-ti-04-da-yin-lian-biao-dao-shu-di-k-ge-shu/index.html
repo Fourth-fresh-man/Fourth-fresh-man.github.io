@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Leetcode刷题-01 左旋转字符串 | 个人博客</title>
+<title>Leetcode刷题-04 打印链表倒数第K个数 | 个人博客</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -24,8 +24,10 @@
 
 
 
-    <meta name="description" content="字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串&quot;abcdefg&quot;和数字2，该函数将返回左旋转两位得到的结果&quot;cdefgab&quot;..." />
-    <meta name="keywords" content="字符串,力扣,简单" />
+    <meta name="description" content="输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。例如，一个链表有6个节点，从头节点开始，它们的值依次是1、2、3、4、5、6。这个链表的倒数第3个节点是值为4的节点。
+
+示..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
@@ -96,89 +98,46 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Leetcode刷题-01 左旋转字符串</h2>
-            <div class="post-date">2020-12-09</div>
+            <h2 class="post-title">Leetcode刷题-04 打印链表倒数第K个数</h2>
+            <div class="post-date">2020-12-12</div>
             
             <div class="post-content" v-pre>
-              <p>字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串&quot;abcdefg&quot;和数字2，该函数将返回左旋转两位得到的结果&quot;cdefgab&quot;。</p>
+              <p>输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。例如，一个链表有6个节点，从头节点开始，它们的值依次是1、2、3、4、5、6。这个链表的倒数第3个节点是值为4的节点。</p>
 <!-- more -->
-<p>示例 1：</p>
-<pre><code>输入: s = &quot;abcdefg&quot;, k = 2
-输出: &quot;cdefgab&quot;
+<p>示例：</p>
+<pre><code>给定一个链表: 1-&gt;2-&gt;3-&gt;4-&gt;5, 和 k = 2.
+返回链表 4-&gt;5.
 </code></pre>
-<p>示例 2：</p>
-<pre><code>输入: s = &quot;lrloseumgh&quot;, k = 6
-输出: &quot;umghlrlose&quot;
-</code></pre>
-<p>限制：<br>
-1 &lt;= k &lt; s.length &lt;= 10000</p>
 <h2 id="思路">思路</h2>
-<h3 id="方法一-字符串切片">方法一 字符串切片</h3>
-<p>利用Java的字符串API来实现</p>
-<pre><code class="language-java">public static String round_str1(String str, int num){
-        // 分成0-n和n-str.length两个长度字符串，并拼接
-        return str.substring(num, str.length())+str.substring(0,num);
-}
-</code></pre>
-<h3 id="方法二-列表遍历">方法二 列表遍历</h3>
-<p>利用列表获取字符串指定位置元素</p>
-<pre><code class="language-java">public static String round_str2(String str, int num){
-    // 利用空字符串构造器，将str指定位置上的字符逐个传入
-    StringBuilder res = new StringBuilder();
-    for (int i = num; i &lt; str.length(); i++) {
-        res.append(str.charAt(i));
+<p>快慢指针，可以让两个指针之间产生距离，同时并行，可以在链表上取任意长度的新链表</p>
+<pre><code class="language-java">class Solution {
+    public ListNode getKthFromEnd(ListNode head, int k) {
+        //双指针
+        ListNode first = head;
+        ListNode second = head;
+        // 让first指针先走k步
+        while (k!=0){
+            first = first.next;
+            k--;
+        }
+        // 然后两个指针同时走
+        while (first!=null){
+            second = second.next;
+            first = first.next;
+        }
+        return second;
     }
-    for (int i = 0; i &lt; num; i++) {
-        res.append(str.charAt(i));
-    }
-    // 返回新字符串
-    return res.toString();
-}
-</code></pre>
-<h4 id="墙裂推荐求余计算">墙裂推荐！求余计算</h4>
-<p>简化代码</p>
-<pre><code class="language-java">public static String round_str2(String str, int num){
-    StringBuilder res = new StringBuilder();
-    for (int i = num; i &lt; num + str.length(); i++){
-        res.append(str.charAt(i%num));
-    }
-    return res.toString();
-}
-</code></pre>
-<h3 id="方法三-字符串遍历拼接">方法三 字符串遍历拼接</h3>
-<pre><code class="language-java">public static String round_str(String str, int num){
-    String res = &quot;&quot;;
-    for (int i = num; i &lt; num + str.length(); i++) {
-        res+=str.charAt(i % str.length());
-    }
-    return res;
 }
 </code></pre>
 
             </div>
             
-              <div class="tag-container">
-                
-                  <a href="https://Fourth-fresh-man.github.io/tag/-MVb5HIy3/" class="tag">
-                    字符串
-                  </a>
-                
-                  <a href="https://Fourth-fresh-man.github.io/tag/HigM_jpiFh/" class="tag">
-                    力扣
-                  </a>
-                
-                  <a href="https://Fourth-fresh-man.github.io/tag/lDiFsYNPiJ/" class="tag">
-                    简单
-                  </a>
-                
-              </div>
-            
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://Fourth-fresh-man.github.io/post/hadoop/">
+                <a href="https://Fourth-fresh-man.github.io/post/leetcode 03/">
                   <h3 class="post-title">
-                    hadoop
+                    Leetcode刷题-03 二叉树的深度
                   </h3>
                 </a>
               </div>

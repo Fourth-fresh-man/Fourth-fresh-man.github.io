@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Leetcode刷题 - 算法以及输入输出模版 | 个人博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Fourth-fresh-man.github.io/favicon.ico?v=1607819078456">
+<link rel="stylesheet" href="https://Fourth-fresh-man.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="在面试的时候，经常会被要求手动实现输入输出，所以避免出现一些题会做但搞不好输入输出，特此做一个模版供各位参考，有更短更快实现版本请各位不吝赐教。
+
+算法模版
+树的先序遍历
+
+# 输入输出模版
+## 单链表
+```java
+// 链表结构
+p..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Fourth-fresh-man.github.io">
+        <img src="https://Fourth-fresh-man.github.io/images/avatar.png?v=1607819078456" class="site-logo">
+        <h1 class="site-title">个人博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      没有真理，只有解释
+    </div>
+    <div class="site-footer">
+      Just talk the code | <a class="rss" href="https://Fourth-fresh-man.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Leetcode刷题 - 算法以及输入输出模版</h2>
+            <div class="post-date">2020-12-12</div>
+            
+            <div class="post-content" v-pre>
+              <p>在面试的时候，经常会被要求手动实现输入输出，所以避免出现一些题会做但搞不好输入输出，特此做一个模版供各位参考，有更短更快实现版本请各位不吝赐教。</p>
+<!-- more -->
+<h1 id="算法模版">算法模版</h1>
+<p>树的先序遍历</p>
+<pre><code class="language-java">
+# 输入输出模版
+## 单链表
+```java
+// 链表结构
+public class ListNode {
+    int val;
+    ListNode next;
+    public ListNode() {
+    }
+    ListNode (int x){val=x;}
+}
+// 输入和输出
+public void in_and_out(){
+    ListNode node = new ListNode();
+    // 传入的链表序列
+    int[] nums = {1,2,3,4,5,6,7,8};
+    int i = 0;
+    // 保存头指针
+    ListNode pre = node;
+    // 给链表赋值
+    while (i &lt; nums.length){
+        node.val=nums[i];
+        i++;
+        if (i == nums.length){
+            break;
+        }
+        node.next = new ListNode();
+        node = node.next;
+    }
+    // 打印链表
+    while (pre!=null){
+        System.out.print(pre.val + &quot; &quot;);
+        pre = pre.next;
+    }
+}
+</code></pre>
+<p>输入输出形式诸如：</p>
+<pre><code>array = [1,2,3,4,5,6,7,8,9]
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://Fourth-fresh-man.github.io/post-images/1607775212587.png" alt="链表" loading="lazy"></figure>
+<h2 id="二叉树">二叉树</h2>
+<pre><code class="language-java">// 树的结构
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x){ val = x;}
+}
+// 将输入的数组，按层序遍历，生成树
+class TreeNodeUtil {
+    public static TreeNode arrayToTreeNode(Integer[] array){
+        if(array.length == 0){
+            return null;
+        }
+        TreeNode root = new TreeNode(array[0]);
+        Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();
+        queue.add(root);
+        boolean isLeft = true;
+        for(int i = 1; i &lt; array.length; i++){
+            TreeNode node = queue.peek();
+            if(isLeft){
+                if(array[i] != null){
+                    node.left = new TreeNode(array[i]);
+                    queue.offer(node.left);
+                }
+                isLeft = false;
+            }else {
+                if(array[i] != null){
+                    node.right = new TreeNode(array[i]);
+                    queue.offer(node.right);
+                }
+                queue.poll();
+                isLeft = true;
+            }
+        }
+        return root;
+    }
+}
+</code></pre>
+<p>输入形式诸如：</p>
+<pre><code>array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://Fourth-fresh-man.github.io/post-images/1607774815142.png" alt="二叉树" loading="lazy"></figure>
+<pre><code>array = [2,null,4,9,8,null,null,4]
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://Fourth-fresh-man.github.io/post-images/1607774896585.png" alt="二叉树" loading="lazy"></figure>
+<h2 id="栈">栈</h2>
+<pre><code class="language-java">public class stack_demo {
+    public static Stack&lt;Integer&gt; arrayToStack(int[] nums){
+        // jdk自带
+        Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();
+        for (int num : nums) {
+            stack.push(num);
+        }
+        return stack;
+    }
+}
+</code></pre>
+<h2 id="队列">队列</h2>
+<pre><code class="language-java">public class queue_demo {
+    public static Queue&lt;Integer&gt; arrayToQueue(int[] nums){
+        // jdk自带
+        Queue&lt;Integer&gt; queue = new Queue&lt;&gt;();
+        for (int num : nums) {
+            queue.enqueue(num);
+        }
+        return queue;
+    }
+}
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Fourth-fresh-man.github.io/post/leetcode-shua-ti-04-da-yin-lian-biao-dao-shu-di-k-ge-shu/">
+                  <h3 class="post-title">
+                    Leetcode刷题-04 打印链表倒数第K个数
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'dcf0ce4e8e91f4176dfe',
+        clientSecret: '09c794543612d3535f93b2aef3051781914cd1e6',
+        repo: 'Fourth-fresh-man.github.io',
+        owner: 'Fourth-fresh-man',
+        admin: ['Fourth-fresh-man'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

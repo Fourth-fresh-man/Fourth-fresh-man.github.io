@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Fourth-fresh-man.github.io</id>
     <title>个人博客</title>
-    <updated>2020-12-12T03:14:41.352Z</updated>
+    <updated>2020-12-13T00:35:56.130Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Fourth-fresh-man.github.io"/>
     <link rel="self" href="https://Fourth-fresh-man.github.io/atom.xml"/>
@@ -10,6 +10,68 @@
     <logo>https://Fourth-fresh-man.github.io/images/avatar.png</logo>
     <icon>https://Fourth-fresh-man.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 个人博客</rights>
+    <entry>
+        <title type="html"><![CDATA[Shell脚本 基础 - 02]]></title>
+        <id>https://Fourth-fresh-man.github.io/post/shell-jiao-ben-ji-chu-02/</id>
+        <link href="https://Fourth-fresh-man.github.io/post/shell-jiao-ben-ji-chu-02/">
+        </link>
+        <updated>2020-12-13T00:16:21.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Shell脚本 基础 - 01]]></title>
+        <id>https://Fourth-fresh-man.github.io/post/shell01/</id>
+        <link href="https://Fourth-fresh-man.github.io/post/shell01/">
+        </link>
+        <updated>2020-12-12T13:15:27.000Z</updated>
+        <summary type="html"><![CDATA[<p>shell是我在实习时候经常会用的语言，一般在项目提供部署，领导要求一些好看的报表时候用的比较多，目前我用shell大概3个月，只会用一些很普通的命令，其实在网上查阅资料的时候就发现了shell许多nb的用法，特此一一记录下来。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>shell是我在实习时候经常会用的语言，一般在项目提供部署，领导要求一些好看的报表时候用的比较多，目前我用shell大概3个月，只会用一些很普通的命令，其实在网上查阅资料的时候就发现了shell许多nb的用法，特此一一记录下来。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Leetcode刷题 - 05 替换空格]]></title>
+        <id>https://Fourth-fresh-man.github.io/post/leetcode05/</id>
+        <link href="https://Fourth-fresh-man.github.io/post/leetcode05/">
+        </link>
+        <updated>2020-12-12T09:00:44.000Z</updated>
+        <summary type="html"><![CDATA[<p>实现一个函数，把字符串s中的每个空格替换成“%20”</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>实现一个函数，把字符串s中的每个空格替换成“%20”</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Leetcode刷题 - 算法以及输入输出模版]]></title>
+        <id>https://Fourth-fresh-man.github.io/post/leetcode-shua-ti-suan-fa-yi-ji-shu-ru-shu-chu-mo-ban/</id>
+        <link href="https://Fourth-fresh-man.github.io/post/leetcode-shua-ti-suan-fa-yi-ji-shu-ru-shu-chu-mo-ban/">
+        </link>
+        <updated>2020-12-12T07:31:31.000Z</updated>
+        <summary type="html"><![CDATA[<p>在面试的时候，经常会被要求手动实现输入输出，所以避免出现一些题会做但搞不好输入输出，特此做一个模版供各位参考，有更短更快实现版本请各位不吝赐教。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>在面试的时候，经常会被要求手动实现输入输出，所以避免出现一些题会做但搞不好输入输出，特此做一个模版供各位参考，有更短更快实现版本请各位不吝赐教。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Leetcode刷题-04 打印链表倒数第K个数]]></title>
+        <id>https://Fourth-fresh-man.github.io/post/leetcode-shua-ti-04-da-yin-lian-biao-dao-shu-di-k-ge-shu/</id>
+        <link href="https://Fourth-fresh-man.github.io/post/leetcode-shua-ti-04-da-yin-lian-biao-dao-shu-di-k-ge-shu/">
+        </link>
+        <updated>2020-12-12T07:24:48.000Z</updated>
+        <summary type="html"><![CDATA[<p>输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。例如，一个链表有6个节点，从头节点开始，它们的值依次是1、2、3、4、5、6。这个链表的倒数第3个节点是值为4的节点。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。例如，一个链表有6个节点，从头节点开始，它们的值依次是1、2、3、4、5、6。这个链表的倒数第3个节点是值为4的节点。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Leetcode刷题-03 二叉树的深度]]></title>
+        <id>https://Fourth-fresh-man.github.io/post/leetcode 03/</id>
+        <link href="https://Fourth-fresh-man.github.io/post/leetcode 03/">
+        </link>
+        <updated>2020-12-12T03:49:59.000Z</updated>
+        <summary type="html"><![CDATA[<p>输入一棵二叉树的根节点，求该树的深度。从根节点到叶节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度为树的深度。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>输入一棵二叉树的根节点，求该树的深度。从根节点到叶节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度为树的深度。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Leetcode刷题-01 左旋转字符串]]></title>
         <id>https://Fourth-fresh-man.github.io/post/leetcode01/</id>
@@ -36,26 +98,6 @@ Hadoop的核心是<strong>YARN,HDFS,Mapreduce</strong></p>
 用户可以在不了解分布式底层细节的情况下，开发分布式程序。充分利用集群的威力进行高速运算和存储。<br>
 具有可靠、高效、可伸缩的特点。<br>
 Hadoop的核心是<strong>YARN,HDFS,Mapreduce</strong></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[hadoop生态]]></title>
-        <id>https://Fourth-fresh-man.github.io/post/hadoop-sheng-tai/</id>
-        <link href="https://Fourth-fresh-man.github.io/post/hadoop-sheng-tai/">
-        </link>
-        <updated>2020-12-09T07:11:32.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://Fourth-fresh-man.github.io/post/hello-gridea/</id>
-        <link href="https://Fourth-fresh-man.github.io/post/hello-gridea/">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
 ]]></content>
     </entry>
 </feed>
