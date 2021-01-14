@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Fourth-fresh-man.github.io/favicon.ico?v=1607819078456">
+<link rel="shortcut icon" href="https://Fourth-fresh-man.github.io/favicon.ico?v=1610607575002">
 <link rel="stylesheet" href="https://Fourth-fresh-man.github.io/styles/main.css">
 
 
@@ -27,13 +27,11 @@
     <meta name="description" content="在面试的时候，经常会被要求手动实现输入输出，所以避免出现一些题会做但搞不好输入输出，特此做一个模版供各位参考，有更短更快实现版本请各位不吝赐教。
 
 算法模版
-树的先序遍历
+数组的一些方法
+//快速排列成一个有序数组
+Arrays.sort(nums)
 
-# 输入输出模版
-## 单链表
-```java
-// 链表结构
-p..." />
+..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -43,7 +41,7 @@ p..." />
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://Fourth-fresh-man.github.io">
-        <img src="https://Fourth-fresh-man.github.io/images/avatar.png?v=1607819078456" class="site-logo">
+        <img src="https://Fourth-fresh-man.github.io/images/avatar.png?v=1610607575002" class="site-logo">
         <h1 class="site-title">个人博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -112,6 +110,12 @@ p..." />
               <p>在面试的时候，经常会被要求手动实现输入输出，所以避免出现一些题会做但搞不好输入输出，特此做一个模版供各位参考，有更短更快实现版本请各位不吝赐教。</p>
 <!-- more -->
 <h1 id="算法模版">算法模版</h1>
+<p>数组的一些方法</p>
+<pre><code class="language-java">//快速排列成一个有序数组
+Arrays.sort(nums)
+
+
+</code></pre>
 <p>树的先序遍历</p>
 <pre><code class="language-java">
 # 输入输出模版
@@ -208,6 +212,9 @@ class TreeNodeUtil {
         for (int num : nums) {
             stack.push(num);
         }
+        // 栈判空leetcode中只支持empty()方法，不能直接使用!=null
+        //stack!=null不可以
+        System.out.print(stack.empty());
         return stack;
     }
 }

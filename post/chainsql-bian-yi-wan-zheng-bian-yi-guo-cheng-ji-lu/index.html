@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>chainsql编译——完整编译过程记录 | 个人博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Fourth-fresh-man.github.io/favicon.ico?v=1610607575002">
+<link rel="stylesheet" href="https://Fourth-fresh-man.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="对于一个学c++不到两小时的我来说，本来打算是放弃编译chainsql的，编译过程实在艰辛难受，不过幸好成功，特此记录一下过程。
+环境准备
+新建一个目录，我把它叫做arch，用来存放待会安装的依赖包
+yum –y install cento..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Fourth-fresh-man.github.io">
+        <img src="https://Fourth-fresh-man.github.io/images/avatar.png?v=1610607575002" class="site-logo">
+        <h1 class="site-title">个人博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      没有真理，只有解释
+    </div>
+    <div class="site-footer">
+      Just talk the code | <a class="rss" href="https://Fourth-fresh-man.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">chainsql编译——完整编译过程记录</h2>
+            <div class="post-date">2021-01-14</div>
+            
+            <div class="post-content" v-pre>
+              <p>对于一个学c++不到两小时的我来说，本来打算是放弃编译chainsql的，编译过程实在艰辛难受，不过幸好成功，特此记录一下过程。</p>
+<h2 id="环境准备">环境准备</h2>
+<p>新建一个目录，我把它叫做arch，用来存放待会安装的依赖包</p>
+<pre><code class="language-sh">yum –y install centos-release-scl
+yum –y install devtoolset-7
+yum -y install python-devel
+
+# 这里是从零开始安装mysql
+# wget http://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+# yum –y install mysql80-community-release-el7-3.noarch.rpm
+# yum –y install mysql-community-server
+# systemctl start mysqld.service
+# 如果你的所在系统已经有了mysql，那就不需要执行
+
+wget https://cmake.org/files/v3.10/cmake-3.10.2.tar.gz
+wget https://dl.bintray.com/boostorg/release/1.63.0/source/boost_1_63_0.tar.gz
+wget http://www.zlib.net/zlib-1.2.11.tar.gz
+wget https://www.openssl.org/source/old/1.0.2/openssl-1.0.2m.tar.gz
+wget https://www.openssl.org/source/openssl-fips-2.0.16.tar.gz
+wget https://github.com/protocolbuffers/protobuf/archive/v3.5.0.tar.gz
+</code></pre>
+<h2 id="开始安装">开始安装</h2>
+<p>先进入dev-7的bash环境，这个环境变量是一次性的，如果你不小心退出了，可以再进去，他只是临时将gcc等一系列套件生效，不用你再去编译安装了</p>
+<pre><code class="language-sh">scl enable devtoolset-7 bash
+</code></pre>
+<h3 id="安装cmake">安装cmake</h3>
+<p>cmake版本必须要3.5.0以上，这里我用的3.10.2</p>
+<pre><code class="language-sh">tar xf cmake-3.10.2.tar.gz
+cd cmake-3.10.2
+./bootstrap
+gmake
+gmake install
+</code></pre>
+<h3 id="安装boost库">安装boost库</h3>
+<p>如果系统中存在boost，看下版本是不是1.63，如果不是则一定要换，低点版本或者高点版本将会导致意料之外的错，比如找不到std库甚至编译直接报错。</p>
+<pre><code class="language-sh"># 找到并删除原有的boost库，如果没有可忽略
+find / -name libboost_system* -exec rm -rf {} \;
+mv /usr/include/boost /usr/include/boost _bak
+</code></pre>
+<p>编译安装</p>
+<pre><code class="language-sh">tar -zxvf boost_1_63_0.tar.gz -C /usr/local &amp;&amp; cd /usr/local/boost_1_63_0
+./bootstrap.sh
+./b2
+./b2 headers install
+./b2 install
+cp -rf boost /usr/include
+cp -rf stage/lib/* /usr/lib
+
+# 刷新ld库
+ldconfig -v
+</code></pre>
+<h3 id="安装zlib库">安装zlib库</h3>
+<p>这个库很和谐，很快装完</p>
+<pre><code class="language-sh">tar xf zlib-1.2.11.tar.gz &amp;&amp; cd zlib-1.2.11
+编译安装
+./configure
+make
+make install
+</code></pre>
+<h3 id="升级openssl">升级openssl</h3>
+<p>这个是个玄学库，我原来系统是1.0.2k-fip，却仍然缺少必要组件，所以只好重新开始装</p>
+<pre><code class="language-sh"># 删除配置文件
+rm -rf /etc/ssl
+# 备份之前的openssl库和脚本，如果第一次安装，可以忽略本步骤
+mv /usr/bin/openssl /usr/bin/openssl_bak
+mv /usr/include/openssl /usr/include/openssl_bak
+# 安装openssl
+tar xf openssl-1.0.2m.tar.gz
+cd openssl-1.0.2m/
+安装路径放在/usr/local/openssl
+./config shared zlib --prefix=/usr/local/openssl
+
+ln -s /usr/local/openssl/bin/openssl /usr/bin/openssl
+ln -s /usr/local/openssl/include/openssl /usr/include/openssl
+
+echo &quot;/usr/local/openssl/lib/&quot; &gt;&gt; /etc/ld.so.conf
+ldconfig -v
+</code></pre>
+<h3 id="安装openssl-fips模块">安装openssl-fips模块</h3>
+<pre><code class="language-sh">tar xf openssl-fips-2.0.16.tar.gz &amp;&amp; cd openssl-fips-2.0.16
+./config shared zlib --prefix=/usr/local/openssl --openssldir=/usr/local/openssl
+make &amp;&amp; make install
+./config -tmake depend
+ldconfig -v
+# 查看是否成功
+ll /usr/include/openssl/ | grep fip
+openssl verison -a
+# 如果成功，将目录加入/etc/profile
+echo &quot;export OPENSSL_ROOT_DIR=/usr/local/openssl&quot; &gt;&gt; /etc/profile
+source /etc/profile
+</code></pre>
+<h3 id="安装protobuf">安装protobuf</h3>
+<p>rpc用的，很牛X</p>
+<pre><code class="language-sh">tar xf v3.5.0.tar.gz 
+cd protobuf-3.5.0/
+执行,大概要一小时安装
+./autogen.sh
+./configure
+make
+make check
+make install
+查看是否成功
+protoc --version
+</code></pre>
+<h2 id="编译">编译</h2>
+<p>下载chainsql的github源码和chainsql最新release的源码。这里并不是打算两个都编译，而是github源码，有个文件夹里有有我要引用的.a文件，而release才是我们真正要编译的</p>
+<pre><code>mkdir software build
+cd software
+git clone https://github.com/ChainSQL/chainsqld.git
+wget https://github.com/ChainSQL/chainsqld/archive/v1.0.2-pop.tar.gz
+
+tar xf v1.0.2-pop.tar.gz
+
+# 进入build目录
+cd ../build
+</code></pre>
+<p>cmake生成makefile</p>
+<pre><code class="language-markdown">cmake –Dtarget=gcc.release –DBOOST_ROOT=/usr/local/boost_1_63_0 你的chainsql release文件夹路径
+</code></pre>
+<p>修改默认链接文件</p>
+<pre><code class="language-sh">vim CmakeFiles/chainsqld.dir/link.txt
+# 将-pthread后面 /usr/…/libmysqlclient.换成刚刚说的chainsql github源码中Builds/Ubuntu/libmysqlclient.a，这就是我要链接的文件，其他都不用
+# 比如我的chainsqld github包路径是/home/wbc/chainsqld，则-pthread后路径替换为/home/wbc/chainsqld/Builds/Ubuntu/libmysqlclient.a
+</code></pre>
+<p>编译开始，在build目录下</p>
+<pre><code class="language-sh">make –j2
+</code></pre>
+<p>编译结束<br>
+在chainsql release新生成的build/gcc.release/目录下，有chainsqld脚本生成，则表示成功</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Fourth-fresh-man.github.io/post/shell-jiao-ben-ji-chu-02/">
+                  <h3 class="post-title">
+                    Shell脚本 基础 - 02
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'dcf0ce4e8e91f4176dfe',
+        clientSecret: '09c794543612d3535f93b2aef3051781914cd1e6',
+        repo: 'Fourth-fresh-man.github.io',
+        owner: 'Fourth-fresh-man',
+        admin: ['Fourth-fresh-man'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
