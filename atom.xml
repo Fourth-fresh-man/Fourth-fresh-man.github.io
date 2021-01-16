@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Fourth-fresh-man.github.io</id>
     <title>个人博客</title>
-    <updated>2021-01-14T06:59:43.151Z</updated>
+    <updated>2021-01-16T13:01:38.894Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Fourth-fresh-man.github.io"/>
     <link rel="self" href="https://Fourth-fresh-man.github.io/atom.xml"/>
@@ -11,18 +11,18 @@
     <icon>https://Fourth-fresh-man.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 个人博客</rights>
     <entry>
+        <title type="html"><![CDATA[我的大数据集群配置]]></title>
+        <id>https://Fourth-fresh-man.github.io/post/wo-de-da-shu-ju-ji-qun-pei-zhi/</id>
+        <link href="https://Fourth-fresh-man.github.io/post/wo-de-da-shu-ju-ji-qun-pei-zhi/">
+        </link>
+        <updated>2021-01-16T12:58:20.000Z</updated>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[chainsql编译——完整编译过程记录]]></title>
         <id>https://Fourth-fresh-man.github.io/post/chainsql-bian-yi-wan-zheng-bian-yi-guo-cheng-ji-lu/</id>
         <link href="https://Fourth-fresh-man.github.io/post/chainsql-bian-yi-wan-zheng-bian-yi-guo-cheng-ji-lu/">
         </link>
         <updated>2021-01-14T06:32:32.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Shell脚本 基础 - 02]]></title>
-        <id>https://Fourth-fresh-man.github.io/post/shell-jiao-ben-ji-chu-02/</id>
-        <link href="https://Fourth-fresh-man.github.io/post/shell-jiao-ben-ji-chu-02/">
-        </link>
-        <updated>2020-12-13T00:16:21.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Shell脚本 基础 - 01]]></title>

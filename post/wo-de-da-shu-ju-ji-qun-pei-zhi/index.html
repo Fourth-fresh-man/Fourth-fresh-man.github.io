@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>我的大数据集群配置 | 个人博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Fourth-fresh-man.github.io/favicon.ico?v=1610802095644">
+<link rel="stylesheet" href="https://Fourth-fresh-man.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="基础配置
+hadoop:2.7.0
+hbase:1.3.3
+zookeeper-3.4.5-cdh5.5.0
+java:1.8.0_221
+
+host文件配置
+::1         localhost localhost.localdom..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Fourth-fresh-man.github.io">
+        <img src="https://Fourth-fresh-man.github.io/images/avatar.png?v=1610802095644" class="site-logo">
+        <h1 class="site-title">个人博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      没有真理，只有解释
+    </div>
+    <div class="site-footer">
+      Just talk the code | <a class="rss" href="https://Fourth-fresh-man.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">我的大数据集群配置</h2>
+            <div class="post-date">2021-01-16</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="基础配置">基础配置</h2>
+<pre><code>hadoop:2.7.0
+hbase:1.3.3
+zookeeper-3.4.5-cdh5.5.0
+java:1.8.0_221
+</code></pre>
+<h2 id="host文件配置">host文件配置</h2>
+<pre><code class="language-sh">::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.5.100 node1
+192.168.5.101 node2
+192.168.5.102 node3
+192.168.5.103 node4
+</code></pre>
+<p>删除127.0.0.1，并且每台机器host配置上这些</p>
+<h2 id="机器配置">机器配置</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>node1</th>
+<th>node2</th>
+<th>node3</th>
+<th>node4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NameNode</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DataNode</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ResourceManager</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>NodeManager</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Zookeeper</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>journalnode</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>zkfc</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="一键配置jdk">一键配置jdk</h2>
+<p>将该脚本放在jdk解压以后的目录。</p>
+<pre><code>#!/bin/bash
+home=`pwd`
+ 
+echo $home
+echo &quot;export JAVA_HOME=${home}&quot; &gt;&gt; /etc/profile
+echo &quot;export JRE_HOME=\$JAVA_HOME/jre&quot; &gt;&gt; /etc/profile
+echo &quot;export CLASSPATH=\$JAVA_HOME/lib&quot; &gt;&gt; /etc/profile
+echo &quot;export PATH=\$PATH:\$JAVA_HOME/bin&quot; &gt;&gt; /etc/profile
+ 
+echo 'ok'
+</code></pre>
+<p>结束执行后，输入source /etc/profile</p>
+<p>jdk配置完成！</p>
+<h2 id="一键配置zookpeer">一键配置zookpeer</h2>
+<p>该脚本放在zookeeper解压后目录下，输入机器序号1，其他机器同样输入</p>
+<pre><code class="language-sh">#!/bin/bash
+home=`pwd`
+echo &quot;export ZOOKEEPER_HOME=${home}&quot; &gt;&gt; /etc/profile
+echo &quot;export PATH=$PATH:${ZOOKEEPER_HOME}/bin&quot; &gt;&gt; /etc/profile
+cp ${home}/conf/zoo_sample.cfg ${home}/conf/zoo.cfg
+
+DataDir=${home}/Data/zookeeper
+LogDir=${home}/Log/zookeeper
+mkdir -p $DataDir
+mkdir -p $LogDir
+
+sed -i '/dataDir/d' ${home}/conf/zoo.cfg
+sed -i '/clientPort=2181/i\dataDir='${DataDir}'' ${home}/conf/zoo.cfg
+sed -i '/clientPort=2181/i\dataLogDir='${LogDir}'' ${home}/conf/zoo.cfg
+sed -i '/clientPort=2181/a\server.1=node1:2888:3888' ${home}/conf/zoo.cfg
+sed -i '/server.1=node1:2888:3888/a\server.2=node2:2888:3888' ${home}/conf/zoo.cfg
+sed -i '/server.2=node2:2888:3888/a\server.3=node3:2888:3888' ${home}/conf/zoo.cfg
+
+cd ${DataDir}
+echo $1 &gt; myid
+cd $home
+</code></pre>
+<p>执行source /etc/profile</p>
+<p>检查是否成功</p>
+<p>启动命令<code>bin/zkServer.sh start</code></p>
+<p>测试命令<code>bin/zkCli.sh -server node1:2181</code></p>
+<p>查看角色<code>bin/zkServer.sh status</code></p>
+<p>停止命令<code>bin/zkServer.sh stop</code></p>
+<h2 id="一键配置hadoop-ha">一键配置hadoop HA</h2>
+<p>将脚本放在你的hadoop包下，和zk一样的设置</p>
+<pre><code class="language-sh">#!/bin/bash
+ROOT_HOME=`pwd`
+# 这里我将node1，也就是我的机器1作为namenode节点,后面hdfs与yarn文件中写死了，请根据实际情况更改
+NAMENODE=node1
+
+
+# Hadoop 生态数据路径
+hadoop_logs=${ROOT_HOME}/logs
+hadoop_tmp=${ROOT_HOME}/hadoop_tmp
+hadoop_data=${ROOT_HOME}/data
+# hadoop_name=${DATA_HOME}/hadoop_name
+# JN_data=${hadoop_data}/JN_data
+
+
+# mkdir -p ${DATA_HOME}
+mkdir -p ${hadoop_logs}
+mkdir -p ${hadoop_tmp}
+mkdir -p ${hadoop_data}
+# mkdir -p ${hadoop_name}
+# mkdir -p ${JN_data}
+
+echo &quot;export HADOOP_HOME=${ROOT_HOME}&quot; &gt;&gt; /etc/profile
+echo 'export PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin' &gt;&gt; /etc/profile
+
+# 1.配置hadoop-env.sh，记得先配置好jdk，这条命令是在jdk没有手动设置的情况下，自己来指定哪一个jdk
+# jdk_home=你指定的jdk位置
+# sed -i &quot;s!\${JAVA_HOME}!$(echo ${jdk_home})!g&quot; ${ROOT_HOME}/etc/hadoop/hadoop-env.sh
+sed -i 's%${JAVA_HOME}%'${JAVA_HOME}'%g' ${ROOT_HOME}/etc/hadoop/hadoop-env.sh
+# 2.配置core-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;ha.zookeeper.quorum\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;node1:2181,node2:2181,node3:2181\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot; ${ROOT_HOME}/etc/hadoop/core-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;fs.defaultFS\&lt;\/name\&gt;\n\\t\\t\&lt;value\&gt;hdfs://mycluster\&lt;\/value\&gt;\n\\t\&lt;\/property\&gt;\n\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;hadoop.tmp.dir\&lt;\/name\&gt;\n\\t\\t\&lt;value\&gt;$(echo ${hadoop_tmp})\&lt;\/value\&gt;\n\\t\&lt;/property\&gt;&quot; ${ROOT_HOME}/etc/hadoop/core-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;io.file.buffer.size\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;131072\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/core-site.xml
+
+
+# 3.配置hdfs-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.nameservices\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;mycluster\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.namenode.rpc-address.mycluster.node1\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;node1:8020\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.namenode.rpc-address.mycluster.node2\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;node2:8020\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+# node1的http通信地址
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.namenode.http-address.mycluster.node1\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;node1:50070\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+# node2的http通信地址
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.namenode.http-address.mycluster.node2\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;node2:50070\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+
+# 指定NameNode元数据在JournalNode上的存放位置 
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.namenode.shared.edits.dir\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;qjournal://node1:8485;node2:8485;node3:8485/mycluster\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.jo.edits.dir\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;${JN_data}\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.ha.namenodes.mycluster\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;node1,node2\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+# 配置隔离机制，即同一时刻只能有一台服务器对外响应
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.ha.fencing.methods\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;sshfence\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+# 使用隔离机制时需要ssh无秘钥登录
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.ha.fencing.ssh.private-key-files\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;/root/.ssh/id_rsa\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+# 关闭权限检查
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.permissions.enable\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;false\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+# 访问代理类：client，mycluster，active配置失败自动切换实现方式
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.client.failover.proxy.provider.mycluster\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+# 故障自动转移
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.ha.automatic-failover.enabled\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;true\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.datanode.data.dir\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;${hadoop_data}\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.namenode.name.dir\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;${hadoop_name}\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.namenode.secondary.http-address\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;node1:9001\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.webhdfs.enabled\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;true\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;dfs.replication\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;3\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;   ${ROOT_HOME}/etc/hadoop/hdfs-site.xml
+
+
+# 4.配置mapred-site.xml 
+cp ${ROOT_HOME}/etc/hadoop/mapred-site.xml.template  ${ROOT_HOME}/etc/hadoop/mapred-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;mapreduce.jobhistory.webapp.address\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;node1:19888\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/etc/hadoop/mapred-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;mapreduce.jobhistory.address\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;node1:10020\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/etc/hadoop/mapred-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;mapreduce.framework.name\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;yarn\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/etc/hadoop/mapred-site.xml
+# 5.配置yarn-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;yarn.resourcemanager.store.class\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/etc/hadoop/yarn-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;yarn.resourcemanager.recovery.enabled\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;true\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/etc/hadoop/yarn-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;yarn.log-aggregation.retain-seconds\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;86400\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/etc/hadoop/yarn-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;yarn.log-aggregation-enable\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;true\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/etc/hadoop/yarn-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;yarn.nodemanager.aux-services\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;mapreduce_shuffle\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/etc/hadoop/yarn-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;yarn.resourcemanager.zk-address\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;node1:2181,node2:2181,node3:2181\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/etc/hadoop/yarn-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;yarn.resourcemanager.hostname.rm1\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;node2\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/etc/hadoop/yarn-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;yarn.resourcemanager.hostname.rm2\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;node3\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/etc/hadoop/yarn-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;yarn.resourcemanager.ha.rm-ids\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;node2,node3\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/etc/hadoop/yarn-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;yarn.resourcemanager.cluster-id\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;yrc\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/etc/hadoop/yarn-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;yarn.resourcemanager.ha.enabled\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;true\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/etc/hadoop/yarn-site.xml
+# 6.配置slaves文件
+sed -i &quot;/localhost/d&quot; ${ROOT_HOME}/etc/hadoop/slaves
+# node2与3为datanode
+echo &quot;node1&quot; &gt;&gt; ${ROOT_HOME}/etc/hadoop/slaves
+echo &quot;node2&quot; &gt;&gt; ${ROOT_HOME}/etc/hadoop/slaves
+echo &quot;node3&quot; &gt;&gt; ${ROOT_HOME}/etc/hadoop/slaves
+
+
+echo &quot;Hadoop配置成功&quot;
+</code></pre>
+<p>source /etc/profile</p>
+<p>启动方法：</p>
+<p>先格式化hadoop<br>
+hdfs  namenode -format</p>
+<p><code>推荐</code>先启动HDFS<br>
+start-dfs.sh<br>
+再启动YARN<br>
+start-yarn.sh</p>
+<p><code>不推荐</code>也可以使用全部启动脚本</p>
+<p>start-all.sh</p>
+<p>检查是否启动成功<br>
+jps</p>
+<h2 id="一键配置hbase">一键配置hbase</h2>
+<p>将此脚本放在hbase同级目录下</p>
+<pre><code class="language-sh">#!/bin/bash
+JDK_HOME=`echo ${JAVA_HOME}`
+ROOT_HOME=`pwd`
+
+sed -i '/export HBASE_OPTS=\&quot;-XX:+UseConcMarkSweepGC\&quot;/i export JAVA_HOME='${JAVA_HOME}'/' ${ROOT_HOME}/conf/hbase-env.sh
+sed -i '/export HBASE_OPTS=\&quot;-XX:+UseConcMarkSweepGC\&quot;/i export HBASE_MANAGES_ZK=false/' ${ROOT_HOME}/conf/hbase-env.sh
+
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;hbase.master.info.port\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;60010\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/conf/hbase-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;hbase.cluster.distributed\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;true\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/conf/hbase-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;hbase.rootdir\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;hdfs://node1:9000/hbase\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/conf/hbase-site.xml
+sed -i &quot;/&lt;configuration&gt;/a\\\t\&lt;property\&gt;\n\\t\\t\&lt;name\&gt;hbase.zookeeper.quorum\&lt;/name\&gt;\n\\t\\t\&lt;value\&gt;node1,node2,node3\&lt;/value\&gt;\n\\t\&lt;/property\&gt;&quot;  ${ROOT_HOME}/conf/hbase-site.xml
+
+
+sed -i &quot;/localhost/d&quot; ${ROOT_HOME}/regionservers
+echo &quot;node2&quot; &gt;&gt; ${ROOT_HOME}/regionservers
+echo &quot;node3&quot; &gt;&gt; ${ROOT_HOME}/regionservers
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Fourth-fresh-man.github.io/post/chainsql-bian-yi-wan-zheng-bian-yi-guo-cheng-ji-lu/">
+                  <h3 class="post-title">
+                    chainsql编译——完整编译过程记录
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'dcf0ce4e8e91f4176dfe',
+        clientSecret: '09c794543612d3535f93b2aef3051781914cd1e6',
+        repo: 'Fourth-fresh-man.github.io',
+        owner: 'Fourth-fresh-man',
+        admin: ['Fourth-fresh-man'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
