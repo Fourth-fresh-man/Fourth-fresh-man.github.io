@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wangbichao.com</id>
     <title>个人博客</title>
-    <updated>2021-01-17T14:50:17.838Z</updated>
+    <updated>2021-01-26T08:00:23.161Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wangbichao.com"/>
     <link rel="self" href="https://wangbichao.com/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://wangbichao.com/images/avatar.png</logo>
     <icon>https://wangbichao.com/favicon.ico</icon>
     <rights>All rights reserved 2021, 个人博客</rights>
+    <entry>
+        <title type="html"><![CDATA[MySQL 8.0配置启动]]></title>
+        <id>https://wangbichao.com/post/mysql-80-pei-zhi-qi-dong/</id>
+        <link href="https://wangbichao.com/post/mysql-80-pei-zhi-qi-dong/">
+        </link>
+        <updated>2021-01-26T06:21:56.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[itx主机配置]]></title>
         <id>https://wangbichao.com/post/itx-zhu-ji-pei-zhi/</id>
@@ -73,17 +80,6 @@
         <summary type="html"><![CDATA[<p>输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。例如，一个链表有6个节点，从头节点开始，它们的值依次是1、2、3、4、5、6。这个链表的倒数第3个节点是值为4的节点。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。例如，一个链表有6个节点，从头节点开始，它们的值依次是1、2、3、4、5、6。这个链表的倒数第3个节点是值为4的节点。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Leetcode刷题-03 二叉树的深度]]></title>
-        <id>https://wangbichao.com/post/leetcode 03/</id>
-        <link href="https://wangbichao.com/post/leetcode 03/">
-        </link>
-        <updated>2020-12-12T03:49:59.000Z</updated>
-        <summary type="html"><![CDATA[<p>输入一棵二叉树的根节点，求该树的深度。从根节点到叶节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度为树的深度。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>输入一棵二叉树的根节点，求该树的深度。从根节点到叶节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度为树的深度。</p>
 ]]></content>
     </entry>
 </feed>

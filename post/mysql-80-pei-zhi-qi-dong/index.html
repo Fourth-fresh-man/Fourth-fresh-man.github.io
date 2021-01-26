@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>MySQL 8.0配置启动 | 个人博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://wangbichao.com/favicon.ico?v=1611647688263">
+<link rel="stylesheet" href="https://wangbichao.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="我是在虚拟机上配置的，用于自学。
+虚拟机系统是centos8。
+接下来说下操作步骤。
+删除原来的mysql
+先删除环境中存在的mysql
+rpm -qa | grep -i mysql
+yum -y remove 上述出现的
+
+把所有出现的..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://wangbichao.com">
+        <img src="https://wangbichao.com/images/avatar.png?v=1611647688263" class="site-logo">
+        <h1 class="site-title">个人博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      没有真理，只有解释
+    </div>
+    <div class="site-footer">
+      Just talk the code | <a class="rss" href="https://wangbichao.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">MySQL 8.0配置启动</h2>
+            <div class="post-date">2021-01-26</div>
+            
+            <div class="post-content" v-pre>
+              <p>我是在虚拟机上配置的，用于自学。<br>
+虚拟机系统是centos8。<br>
+接下来说下操作步骤。</p>
+<h1 id="删除原来的mysql">删除原来的mysql</h1>
+<h2 id="先删除环境中存在的mysql">先删除环境中存在的mysql</h2>
+<pre><code class="language-sh">rpm -qa | grep -i mysql
+yum -y remove 上述出现的
+</code></pre>
+<h2 id="把所有出现的目录统统删除">把所有出现的目录统统删除</h2>
+<pre><code class="language-sh">find / -name mysql
+</code></pre>
+<h2 id="删除配置文件">删除配置文件</h2>
+<pre><code class="language-sh">rm -rf /etc/my.cnf
+</code></pre>
+<h2 id="删除mysql的默认密码">删除mysql的默认密码</h2>
+<pre><code class="language-sh">rm -rf /root/.mysql_sercret
+</code></pre>
+<h1 id="执行安装">执行安装</h1>
+<p>如果是新机器，curl工具需要更新才能下载</p>
+<pre><code class="language-sh">yum update curl -y
+</code></pre>
+<h2 id="配置mysql-80安装源">配置Mysql 8.0安装源</h2>
+<pre><code class="language-sh"># root或具备sudo特权的用户下执行
+sudo dnf install @mysql
+</code></pre>
+<h2 id="安装mysql-80">安装Mysql 8.0</h2>
+<pre><code class="language-sh">sudo systemctl enable --now mysqld
+</code></pre>
+<h2 id="启动mysq服务">启动MySQ服务</h2>
+<pre><code class="language-sh">sudo systemctl status mysqld
+</code></pre>
+<h2 id="启动安装脚本">启动安装脚本</h2>
+<pre><code class="language-sh">sudo mysql_secure_installation
+</code></pre>
+<p>我的选择是这样的</p>
+<pre><code>[root@node1 yum.repos.d]# mysql_secure_installation
+Securing the MySQL server deployment.
+Connecting to MySQL using a blank password.
+
+VALIDATE PASSWORD COMPONENT can be used to test passwords
+and improve security. It checks the strength of password
+and allows the users to set only those passwords which are
+secure enough. Would you like to setup VALIDATE PASSWORD component?
+
+Press y|Y for Yes, any other key for No: n 不使用验证组件
+Please set the password for root here.
+
+New password: 
+
+Re-enter new password: 
+By default, a MySQL installation has an anonymous user,
+allowing anyone to log into MySQL without having to have
+a user account created for them. This is intended only for
+testing, and to make the installation go a bit smoother.
+You should remove them before moving into a production
+environment.
+
+Remove anonymous users? (Press y|Y for Yes, any other key for No) : y 允许匿名用户
+Success.
+
+
+Normally, root should only be allowed to connect from
+'localhost'. This ensures that someone cannot guess at
+the root password from the network.
+
+Disallow root login remotely? (Press y|Y for Yes, any other key for No) : n 允许远程连接
+
+ ... skipping.
+By default, MySQL comes with a database named 'test' that
+anyone can access. This is also intended only for testing,
+and should be removed before moving into a production
+environment.
+
+
+Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y
+ - Dropping test database...
+Success.
+
+ - Removing privileges on test database...
+Success.
+
+Reloading the privilege tables will ensure that all changes
+made so far will take effect immediately.
+
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y 快速加载上述信息
+Success.
+
+All done! 
+</code></pre>
+<h2 id="修改身份验证插件">修改身份验证插件</h2>
+<pre><code class="language-sh">sudo vim /etc/my.cnf.d/mysql-default-authentication-plugin.cnf
+</code></pre>
+<pre><code class="language-properties">[mysqld]
+default_authentication_plugin=mysql_native_password
+</code></pre>
+<p>然后重启mysql</p>
+<pre><code class="language-sh">systemctl restart mysqld
+</code></pre>
+<h2 id="更改密码">更改密码</h2>
+<p>进入myql命令行。登录成功后输入</p>
+<pre><code class="language-sql">ALTER USER 'root'@'localhost' IDENTIFIED BY 'xxxxxxx'; ---xxxxxxx:就是你的密码
+</code></pre>
+<h2 id="客户端连接mysql报错">客户端连接mysql报错</h2>
+<p>原因是Mysql默认不允许远程登录，所以需要开启远程访问权限</p>
+<pre><code class="language-sql">use mysql;
+select user,host from user;
+</code></pre>
+<p>如<br>
+mysql&gt; select host,user from user;<br>
+| host | user |<br>
+| localhost | mysql.infoschema |<br>
+| localhost | mysql.session    |<br>
+| localhost | mysql.sys        |<br>
+| localhost | root             |</p>
+<p>默认都是localhost</p>
+<pre><code class="language-sql">-- 更改为%
+update user set host = '%' where user = 'root';
+flush privileges;
+</code></pre>
+<p>如果不打算停掉防火墙，可以把这个端口加入规则</p>
+<pre><code class="language-sh">firewall-cmd --zone=public --add-port=3306/tcp --permanent
+firewall-cmd --reload
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://wangbichao.com/post/itx-zhu-ji-pei-zhi/">
+                  <h3 class="post-title">
+                    itx主机配置
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'dcf0ce4e8e91f4176dfe',
+        clientSecret: '09c794543612d3535f93b2aef3051781914cd1e6',
+        repo: 'Fourth-fresh-man.github.io',
+        owner: 'Fourth-fresh-man',
+        admin: ['Fourth-fresh-man'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
