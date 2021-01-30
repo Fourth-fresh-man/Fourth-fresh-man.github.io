@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Leetcode刷题-01 左旋转字符串 | 个人博客</title>
+<title>前后端分离项目-尚硅谷在线教育项目2.0 | 个人博客</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -24,8 +24,14 @@
 
 
 
-    <meta name="description" content="字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串&quot;abcdefg&quot;和数字2，该函数将返回左旋转两位得到的结果&quot;cdefgab&quot;..." />
-    <meta name="keywords" content="字符串,力扣,简单" />
+    <meta name="description" content="我大概第一次接触这种常见的互联网项目，是用SpringBoot和Vue-Element-UI分别承担后端和前端，主要是想跟着一个项目，尝试独立开发一个自己了解的系统，在这个基础上，我能够尝试提出更复杂更高效的系统架构。
+技术点
+前端
+
+
+
+..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
@@ -96,89 +102,106 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Leetcode刷题-01 左旋转字符串</h2>
-            <div class="post-date">2020-12-09</div>
+            <h2 class="post-title">前后端分离项目-尚硅谷在线教育项目2.0</h2>
+            <div class="post-date">2021-01-30</div>
             
             <div class="post-content" v-pre>
-              <p>字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串&quot;abcdefg&quot;和数字2，该函数将返回左旋转两位得到的结果&quot;cdefgab&quot;。</p>
-<!-- more -->
-<p>示例 1：</p>
-<pre><code>输入: s = &quot;abcdefg&quot;, k = 2
-输出: &quot;cdefgab&quot;
-</code></pre>
-<p>示例 2：</p>
-<pre><code>输入: s = &quot;lrloseumgh&quot;, k = 6
-输出: &quot;umghlrlose&quot;
-</code></pre>
-<p>限制：<br>
-1 &lt;= k &lt; s.length &lt;= 10000</p>
-<h2 id="思路">思路</h2>
-<h3 id="方法一-字符串切片">方法一 字符串切片</h3>
-<p>利用Java的字符串API来实现</p>
-<pre><code class="language-java">public static String round_str1(String str, int num){
-        // 分成0-n和n-str.length两个长度字符串，并拼接
-        return str.substring(num, str.length())+str.substring(0,num);
-}
-</code></pre>
-<h3 id="方法二-列表遍历">方法二 列表遍历</h3>
-<p>利用列表获取字符串指定位置元素</p>
-<pre><code class="language-java">public static String round_str2(String str, int num){
-    // 利用空字符串构造器，将str指定位置上的字符逐个传入
-    StringBuilder res = new StringBuilder();
-    for (int i = num; i &lt; str.length(); i++) {
-        res.append(str.charAt(i));
-    }
-    for (int i = 0; i &lt; num; i++) {
-        res.append(str.charAt(i));
-    }
-    // 返回新字符串
-    return res.toString();
-}
-</code></pre>
-<h4 id="墙裂推荐求余计算">墙裂推荐！求余计算</h4>
-<p>简化代码</p>
-<pre><code class="language-java">public static String round_str2(String str, int num){
-    StringBuilder res = new StringBuilder();
-    for (int i = num; i &lt; num + str.length(); i++){
-        res.append(str.charAt(i%num));
-    }
-    return res.toString();
-}
-</code></pre>
-<h3 id="方法三-字符串遍历拼接">方法三 字符串遍历拼接</h3>
-<pre><code class="language-java">public static String round_str(String str, int num){
-    String res = &quot;&quot;;
-    for (int i = num; i &lt; num + str.length(); i++) {
-        res+=str.charAt(i % str.length());
-    }
-    return res;
-}
-</code></pre>
+              <p>我大概第一次接触这种常见的互联网项目，是用SpringBoot和Vue-Element-UI分别承担后端和前端，主要是想跟着一个项目，尝试独立开发一个自己了解的系统，在这个基础上，我能够尝试提出更复杂更高效的系统架构。</p>
+<h2 id="技术点">技术点</h2>
+<h3 id="前端">前端</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>用途</th>
+<th>作用成分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vue</td>
+<td>快速构建用户界面</td>
+<td>主体</td>
+</tr>
+<tr>
+<td>Element-ui</td>
+<td>提供定制好的ui</td>
+<td>插件</td>
+</tr>
+<tr>
+<td>axios</td>
+<td>前后端数据交互的接口</td>
+<td>插件</td>
+</tr>
+<tr>
+<td>babel</td>
+<td>es6到es5转码器</td>
+<td>插件</td>
+</tr>
+<tr>
+<td>webpack</td>
+<td>js文件打包工具</td>
+<td>插件</td>
+</tr>
+<tr>
+<td>eslint</td>
+<td>js语法检查</td>
+<td>插件</td>
+</tr>
+<tr>
+<td>各种loader</td>
+<td>加载组件，图片等资源</td>
+<td>插件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="后端">后端</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>用途</th>
+<th>作用成分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spring全家桶</td>
+<td>提供后端服务</td>
+<td>主体</td>
+</tr>
+<tr>
+<td>mybatis-plus</td>
+<td>快捷提供Dao层服务</td>
+<td>主体</td>
+</tr>
+<tr>
+<td>swagger</td>
+<td>API可视化测试</td>
+<td>插件</td>
+</tr>
+<tr>
+<td>阿里云工具系列</td>
+<td>提供一些可插拔服务</td>
+<td>插件</td>
+</tr>
+<tr>
+<td>JWT</td>
+<td>提供验证服务</td>
+<td>插件</td>
+</tr>
+</tbody>
+</table>
+<p>后续步骤将陆续开放。</p>
 
             </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://wangbichao.com/tag/-MVb5HIy3/" class="tag">
-                    字符串
-                  </a>
-                
-                  <a href="https://wangbichao.com/tag/HigM_jpiFh/" class="tag">
-                    力扣
-                  </a>
-                
-                  <a href="https://wangbichao.com/tag/lDiFsYNPiJ/" class="tag">
-                    简单
-                  </a>
-                
-              </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://wangbichao.com/post/hadoop/">
+                <a href="https://wangbichao.com/post/mysql-80-pei-zhi-qi-dong/">
                   <h3 class="post-title">
-                    hadoop
+                    MySQL 8.0配置启动
                   </h3>
                 </a>
               </div>
