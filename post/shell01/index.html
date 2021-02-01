@@ -1,100 +1,96 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
-
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shell脚本 基础 - 01 | 个人博客</title>
-<meta name="description" content="没有真理，只有解释">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://wangbichao.com/favicon.ico?v=1612160825155">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="https://wangbichao.com/favicon.ico?v=1612161178324">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://wangbichao.com/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Shell脚本 基础 - 01 | 个人博客 - Atom Feed" href="https://wangbichao.com/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
-  
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
-  
 
-  
+    <meta name="description" content="shell是我在实习时候经常会用的语言，一般在项目提供部署，领导要求一些好看的报表时候用的比较多，目前我用shell大概3个月，只会用一些很普通的命令，其实在网上查阅资料的时候就发现了shell许多nb的用法，特此一一记录下来。
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
-
+shel..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-  
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="https://wangbichao.com">个人博客</a></h3>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wangbichao.com">
+  <img class="avatar" src="https://wangbichao.com/images/avatar.png?v=1612161178324" alt="">
+  </a>
+  <h1 class="site-title">
+    个人博客
+  </h1>
+  <p class="site-description">
+    没有真理，只有解释
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
   </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
-        
-          <li>
-            
-              <a href="/" class="menu">
-                首页
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/archives" class="menu">
-                归档
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/tags" class="menu">
-                标签
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/about" class="menu">
-                关于
-              </a>
-            
-          </li>
-        
-      </ul>
-    </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   </div>
-</nav>
+</div>
 
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          <article class="article">
-            <h1>Shell脚本 基础 - 01</h1>
-            <p class="article-meta">
-              2020-12-12
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Shell脚本 基础 - 01
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-12-12
+              </span>
+              <span>
+                4 min read
+              </span>
               
-            </p>
+            </div>
             
-            <div class="post-content">
-              <p>shell是我在实习时候经常会用的语言，一般在项目提供部署，领导要求一些好看的报表时候用的比较多，目前我用shell大概3个月，只会用一些很普通的命令，其实在网上查阅资料的时候就发现了shell许多nb的用法，特此一一记录下来。</p>
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>shell是我在实习时候经常会用的语言，一般在项目提供部署，领导要求一些好看的报表时候用的比较多，目前我用shell大概3个月，只会用一些很普通的命令，其实在网上查阅资料的时候就发现了shell许多nb的用法，特此一一记录下来。</p>
 <!-- more -->
 <h2 id="shell脚本的定义">shell脚本的定义</h2>
 <p>shell脚本默认是用户使用linux的桥梁，底层使用C语言实现。<br>
@@ -182,215 +178,123 @@ str=&quot;this is a string&quot;
 echo `expr index &quot;$str&quot; io` # 输出3
 </code></pre>
 
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#shell%E8%84%9A%E6%9C%AC%E7%9A%84%E5%AE%9A%E4%B9%89">shell脚本的定义</a></li>
+<li><a href="#shell%E8%84%9A%E6%9C%AC%E6%89%A7%E8%A1%8C">shell脚本执行</a></li>
+<li><a href="#shell%E5%A4%9A%E8%A1%8C%E4%B8%8E%E5%8D%95%E8%A1%8C%E6%B3%A8%E9%87%8A">shell多行与单行注释</a></li>
+<li><a href="#shell%E8%84%9A%E6%9C%AC%E4%B8%8E%E5%85%B6%E4%BB%96%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%9A%84%E5%B7%AE%E5%BC%82%E5%92%8C%E5%85%B1%E6%80%A7">shell脚本与其他程序设计语言的差异和共性</a>
+<ul>
+<li><a href="#shell%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC">shell变量赋值</a></li>
+<li><a href="#shell%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8">shell变量使用</a>
+<ul>
+<li><a href="#shell%E5%9B%9E%E6%98%BE%E4%B8%8Eprint"><strong>shell回显与print</strong></a></li>
+<li><a href="#shell%E5%8F%98%E9%87%8F%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%88%A0%E9%99%A4"><strong>shell变量权限设置和删除</strong></a></li>
+<li><a href="#shell%E5%AD%97%E7%AC%A6%E4%B8%B2"><strong>shell字符串</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
             </div>
           </article>
         </div>
-        <div class="paper" data-aos="fade-in">
-          
-            <div class="next-post">
-              <div class="next">
-                下一篇
-              </div>
-              <a href="https://wangbichao.com/post/leetcode05/">
-                <h3 class="post-title">
-                  Leetcode刷题 - 05 替换空格
-                </h3>
-              </a>
-            </div>
-          
-        </div>
-        
-          
-            <div class="paper" data-aos="fade-in">
-              <div id="gitalk-container"></div>
-            </div>
-          
 
-          
         
-      </div>
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wangbichao.com/post/leetcode05/">
+              <h3 class="post-title">
+                Leetcode刷题 - 05 替换空格
+              </h3>
+            </a>
+          </div>
+        
 
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="https://wangbichao.com/images/avatar.png?v=1612160825155" class="no-responsive avatar">
-    <div class="text-muted">没有真理，只有解释</div>
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
-    </div>
-    <div class="row">
-      <ul>
         
           
-            <li>
-              <a href="https://wangbichao.com/post/qian-hou-duan-fen-chi-xiang-mu-shang-huo-gu-zai-xian-jiao-yu-xiang-mu-20/">前后端分离项目-尚硅谷在线教育项目2.0</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://wangbichao.com/post/mysql-80-pei-zhi-qi-dong/">MySQL 8.0配置启动</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://wangbichao.com/post/itx-zhu-ji-pei-zhi/">itx主机配置</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://wangbichao.com/post/wo-de-da-shu-ju-ji-qun-pei-zhi/">我的大数据集群配置</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://wangbichao.com/post/chainsql-bian-yi-wan-zheng-bian-yi-guo-cheng-ji-lu/">chainsql编译——完整编译过程记录</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://wangbichao.com/post/shell01/">Shell脚本 基础 - 01</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://wangbichao.com/post/leetcode05/">Leetcode刷题 - 05 替换空格</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://wangbichao.com/post/leetcode-shua-ti-suan-fa-yi-ji-shu-ru-shu-chu-mo-ban/">Leetcode刷题 - 算法以及输入输出模版</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://wangbichao.com/post/leetcode-shua-ti-04-da-yin-lian-biao-dao-shu-di-k-ge-shu/">Leetcode刷题-04 打印链表倒数第K个数</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://wangbichao.com/post/leetcode 03/">Leetcode刷题-03 二叉树的深度</a>
-            </li>
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      </ul>
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
-      
-        <a href="https://wangbichao.com/tag/-MVb5HIy3/" class="badge warning">
-          字符串
-        </a>
-      
-        <a href="https://wangbichao.com/tag/HigM_jpiFh/" class="badge warning">
-          力扣
-        </a>
-      
-        <a href="https://wangbichao.com/tag/lDiFsYNPiJ/" class="badge secondary">
-          简单
-        </a>
-      
-        <a href="https://wangbichao.com/tag/iCuqjh-UW/" class="badge warning">
-          树
-        </a>
-      
-        <a href="https://wangbichao.com/tag/zOfdeJAy3w/" class="badge secondary">
-          递归
-        </a>
-      
-        <a href="https://wangbichao.com/tag/EaXjSDXpr/" class="badge secondary">
-          hadoop
-        </a>
-      
-        <a href="https://wangbichao.com/tag/Bf_Bbi_aM/" class="badge secondary">
-          hadoop生态
-        </a>
-      
-        <a href="https://wangbichao.com/tag/zwveJcEEi/" class="badge warning">
-          Gridea
-        </a>
-      
-    </div>
-  </div>
-  <div class="paper">
-    Just talk the code | <a class="rss" href="https://wangbichao.com/atom.xml" target="_blank">RSS</a>
-  </div>
-</div>
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
+<div id="gitalk-container"></div>
 
-    </div>
+<script>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  var gitalk = new Gitalk({
+    clientID: 'dcf0ce4e8e91f4176dfe',
+    clientSecret: '09c794543612d3535f93b2aef3051781914cd1e6',
+    repo: 'Fourth-fresh-man.github.io',
+    owner: 'Fourth-fresh-man',
+    admin: ['Fourth-fresh-man'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
 
-<script type="application/javascript">
-
-AOS.init();
-
-hljs.initHighlightingOnLoad()
+  gitalk.render('gitalk-container')
 
 </script>
 
+          
 
+          
+        
 
-  
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        <div class="site-footer">
+  Just talk the code
+  <a class="rss" href="https://wangbichao.com/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
     <script>
+      hljs.initHighlightingOnLoad()
 
-      var gitalk = new Gitalk({
-        clientID: 'dcf0ce4e8e91f4176dfe',
-        clientSecret: '09c794543612d3535f93b2aef3051781914cd1e6',
-        repo: 'Fourth-fresh-man.github.io',
-        owner: 'Fourth-fresh-man',
-        admin: ['Fourth-fresh-man'],
-        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
-      gitalk.render('gitalk-container')
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
 
     </script>
-  
-
-  
-
-
-
-
   </body>
 </html>
