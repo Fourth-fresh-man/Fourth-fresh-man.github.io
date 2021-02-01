@@ -4,11 +4,14 @@
     <meta charset="utf-8" >
 
 <title>Leetcode刷题 - 05 替换空格 | 个人博客</title>
+<meta name="description" content="没有真理，只有解释">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://wangbichao.com/favicon.ico?v=1612160825155">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://wangbichao.com/favicon.ico?v=1612017194125">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://wangbichao.com/styles/main.css">
 
 
@@ -18,96 +21,91 @@
 
   
 
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
-
-    <meta name="description" content="实现一个函数，把字符串s中的每个空格替换成“%20”
-
-示例：
-输入：s = &quot;We are happy.&quot;
-输出：&quot;We%20are%20happy.&quot;
-
-思路
-方法一 调库
-class Solut..." />
-    <meta name="keywords" content="字符串,力扣,简单" />
   </head>
   <body>
-    <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://wangbichao.com">
-        <img src="https://wangbichao.com/images/avatar.png?v=1612017194125" class="site-logo">
-        <h1 class="site-title">个人博客</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div>
-      
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
-      
-    </div>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://wangbichao.com">个人博客</a></h3>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      没有真理，只有解释
-    </div>
-    <div class="site-footer">
-      Just talk the code | <a class="rss" href="https://wangbichao.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
-
-
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">Leetcode刷题 - 05 替换空格</h2>
-            <div class="post-date">2020-12-12</div>
+          <li>
             
-            <div class="post-content" v-pre>
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>Leetcode刷题 - 05 替换空格</h1>
+            <p class="article-meta">
+              2020-12-12
+              
+                <a href="https://wangbichao.com/tag/-MVb5HIy3/" class="badge warning">
+                  字符串
+                </a>
+              
+                <a href="https://wangbichao.com/tag/HigM_jpiFh/" class="badge ">
+                  力扣
+                </a>
+              
+                <a href="https://wangbichao.com/tag/lDiFsYNPiJ/" class="badge success">
+                  简单
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
               <p>实现一个函数，把字符串s中的每个空格替换成“%20”</p>
 <!-- more -->
 <p>示例：</p>
@@ -142,68 +140,188 @@ class Solut..." />
 </code></pre>
 
             </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://wangbichao.com/tag/-MVb5HIy3/" class="tag">
-                    字符串
-                  </a>
-                
-                  <a href="https://wangbichao.com/tag/HigM_jpiFh/" class="tag">
-                    力扣
-                  </a>
-                
-                  <a href="https://wangbichao.com/tag/lDiFsYNPiJ/" class="tag">
-                    简单
-                  </a>
-                
-              </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://wangbichao.com/post/leetcode-shua-ti-suan-fa-yi-ji-shu-ru-shu-chu-mo-ban/">
-                  <h3 class="post-title">
-                    Leetcode刷题 - 算法以及输入输出模版
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-              
-                <div id="gitalk-container" data-aos="fade-in"></div>
-              
-
-              
-            
-
-          </div>
-
+          </article>
         </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://wangbichao.com/post/leetcode-shua-ti-suan-fa-yi-ji-shu-ru-shu-chu-mo-ban/">
+                <h3 class="post-title">
+                  Leetcode刷题 - 算法以及输入输出模版
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
+
+          
+        
       </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://wangbichao.com/images/avatar.png?v=1612160825155" class="no-responsive avatar">
+    <div class="text-muted">没有真理，只有解释</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://wangbichao.com/post/qian-hou-duan-fen-chi-xiang-mu-shang-huo-gu-zai-xian-jiao-yu-xiang-mu-20/">前后端分离项目-尚硅谷在线教育项目2.0</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://wangbichao.com/post/mysql-80-pei-zhi-qi-dong/">MySQL 8.0配置启动</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://wangbichao.com/post/itx-zhu-ji-pei-zhi/">itx主机配置</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://wangbichao.com/post/wo-de-da-shu-ju-ji-qun-pei-zhi/">我的大数据集群配置</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://wangbichao.com/post/chainsql-bian-yi-wan-zheng-bian-yi-guo-cheng-ji-lu/">chainsql编译——完整编译过程记录</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://wangbichao.com/post/shell01/">Shell脚本 基础 - 01</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://wangbichao.com/post/leetcode05/">Leetcode刷题 - 05 替换空格</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://wangbichao.com/post/leetcode-shua-ti-suan-fa-yi-ji-shu-ru-shu-chu-mo-ban/">Leetcode刷题 - 算法以及输入输出模版</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://wangbichao.com/post/leetcode-shua-ti-04-da-yin-lian-biao-dao-shu-di-k-ge-shu/">Leetcode刷题-04 打印链表倒数第K个数</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://wangbichao.com/post/leetcode 03/">Leetcode刷题-03 二叉树的深度</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://wangbichao.com/tag/-MVb5HIy3/" class="badge ">
+          字符串
+        </a>
+      
+        <a href="https://wangbichao.com/tag/HigM_jpiFh/" class="badge success">
+          力扣
+        </a>
+      
+        <a href="https://wangbichao.com/tag/lDiFsYNPiJ/" class="badge ">
+          简单
+        </a>
+      
+        <a href="https://wangbichao.com/tag/iCuqjh-UW/" class="badge secondary">
+          树
+        </a>
+      
+        <a href="https://wangbichao.com/tag/zOfdeJAy3w/" class="badge secondary">
+          递归
+        </a>
+      
+        <a href="https://wangbichao.com/tag/EaXjSDXpr/" class="badge warning">
+          hadoop
+        </a>
+      
+        <a href="https://wangbichao.com/tag/Bf_Bbi_aM/" class="badge secondary">
+          hadoop生态
+        </a>
+      
+        <a href="https://wangbichao.com/tag/zwveJcEEi/" class="badge warning">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Just talk the code | <a class="rss" href="https://wangbichao.com/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
 <script type="application/javascript">
 
 AOS.init();
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+hljs.initHighlightingOnLoad()
 
 </script>
-
-
-  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>
-    hljs.initHighlightingOnLoad()
-  </script>
-
 
 
 
