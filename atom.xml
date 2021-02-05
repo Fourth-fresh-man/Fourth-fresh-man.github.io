@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wangbichao.com</id>
     <title>个人博客</title>
-    <updated>2021-02-04T08:39:56.662Z</updated>
+    <updated>2021-02-05T08:15:27.092Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wangbichao.com"/>
     <link rel="self" href="https://wangbichao.com/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://wangbichao.com/images/avatar.png</logo>
     <icon>https://wangbichao.com/favicon.ico</icon>
     <rights>All rights reserved 2021, 个人博客</rights>
+    <entry>
+        <title type="html"><![CDATA[n个骰子的点数]]></title>
+        <id>https://wangbichao.com/post/n-ge-tou-zi-de-dian-shu/</id>
+        <link href="https://wangbichao.com/post/n-ge-tou-zi-de-dian-shu/">
+        </link>
+        <updated>2021-02-05T07:24:30.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[前后端分离项目-尚硅谷在线教育项目2.0]]></title>
         <id>https://wangbichao.com/post/qian-hou-duan-fen-chi-xiang-mu-shang-huo-gu-zai-xian-jiao-yu-xiang-mu-20/</id>
@@ -65,17 +72,6 @@
         <summary type="html"><![CDATA[<p>实现一个函数，把字符串s中的每个空格替换成“%20”</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>实现一个函数，把字符串s中的每个空格替换成“%20”</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Leetcode刷题 - 算法以及输入输出模版]]></title>
-        <id>https://wangbichao.com/post/leetcode-shua-ti-suan-fa-yi-ji-shu-ru-shu-chu-mo-ban/</id>
-        <link href="https://wangbichao.com/post/leetcode-shua-ti-suan-fa-yi-ji-shu-ru-shu-chu-mo-ban/">
-        </link>
-        <updated>2020-12-12T07:31:31.000Z</updated>
-        <summary type="html"><![CDATA[<p>在面试的时候，经常会被要求手动实现输入输出，所以避免出现一些题会做但搞不好输入输出，特此做一个模版供各位参考，有更短更快实现版本请各位不吝赐教。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>在面试的时候，经常会被要求手动实现输入输出，所以避免出现一些题会做但搞不好输入输出，特此做一个模版供各位参考，有更短更快实现版本请各位不吝赐教。</p>
 ]]></content>
     </entry>
 </feed>

@@ -1,0 +1,224 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>n个骰子的点数 | 个人博客</title>
+<link rel="shortcut icon" href="https://wangbichao.com/favicon.ico?v=1612511098224">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wangbichao.com/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="n个骰子的点数 | 个人博客 - Atom Feed" href="https://wangbichao.com/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="把n个骰子扔在地上，所有骰子朝上一面的点数之和为s。输入n，打印出s的所有可能的值出现的概率。
+你需要用一个浮点数数组返回答案，其中第 i 个元素代表这 n 个骰子所能掷出的点数集合中第 i 小的那个的概率。
+示例 1:
+输入: 1
+输出:..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wangbichao.com">
+  <img class="avatar" src="https://wangbichao.com/images/avatar.png?v=1612511098224" alt="">
+  </a>
+  <h1 class="site-title">
+    个人博客
+  </h1>
+  <p class="site-description">
+    没有真理，只有解释
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              n个骰子的点数
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-02-05
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>把n个骰子扔在地上，所有骰子朝上一面的点数之和为s。输入n，打印出s的所有可能的值出现的概率。<br>
+你需要用一个浮点数数组返回答案，其中第 i 个元素代表这 n 个骰子所能掷出的点数集合中第 i 小的那个的概率。<br>
+示例 1:</p>
+<pre><code>输入: 1
+输出: [0.16667,0.16667,0.16667,0.16667,0.16667,0.16667]
+</code></pre>
+<p>示例 2:</p>
+<pre><code>输入: 2
+输出: [0.02778,0.05556,0.08333,0.11111,0.13889,0.16667,0.13889,0.11111,0.08333,0.05556,0.02778]
+</code></pre>
+<p>限制：<br>
+<code>1 &lt;= n &lt;= 11</code></p>
+<p>这题耗费我很久才理解，最后结果是概率论里的正态分布形式，非常符合常识，骰子越多，最大可能得到的数其实是不大不小的数。<br>
+说下我不懂的点<br>
+举一例子，2个骰子，能够得到11种结果，分别是<code>2，3，4，5，6，7，8，9，10，11，12</code>，可以看出结果集合和骰子个数的关系，首尾相减是<code>12-2=10</code>，然后加上1，即是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>n</mi><mo>∗</mo><mn>6</mn><mo>−</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">(n*6 - n + 1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>，也就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>∗</mo><mn>5</mn><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n*5+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>。这里单独说下，如果你不能快速分辨0-9和1-10的区别，建议先看下这个，<a href="https://baike.baidu.com/item/%E5%B7%AE%E4%B8%80%E9%94%99%E8%AF%AF/16835146?fr=aladdin">差一错误</a><br>
+其次，状态转移方程，本质就是在上一个状态累积某个值，传递给下一个状态，不断循环，直到结果，所以这题就是在n-1骰子的概率数组的基础上，去解决n个骰子的概率数组问题。<br>
+<a href="https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof/solution/java-dong-tai-gui-hua-by-zhi-xiong/">题解传送门</a></p>
+<p>大神的代码</p>
+<pre><code class="language-java">public double[] twoSum(int n) {
+    double pre[]={1/6d,1/6d,1/6d,1/6d,1/6d,1/6d};
+    for(int i=2;i&lt;=n;i++){
+        double tmp[]=new double[5*i+1];
+        for(int j=0;j&lt;pre.length;j++)
+            for(int x=0;x&lt;6;x++)
+                tmp[j+x]+=pre[j]/6;
+        pre=tmp;
+    }
+    return pre;
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wangbichao.com/post/qian-hou-duan-fen-chi-xiang-mu-shang-huo-gu-zai-xian-jiao-yu-xiang-mu-20/">
+              <h3 class="post-title">
+                前后端分离项目-尚硅谷在线教育项目2.0
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'dcf0ce4e8e91f4176dfe',
+    clientSecret: '09c794543612d3535f93b2aef3051781914cd1e6',
+    repo: 'Fourth-fresh-man.github.io',
+    owner: 'Fourth-fresh-man',
+    admin: ['Fourth-fresh-man'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Just talk the code
+  <a class="rss" href="https://wangbichao.com/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
