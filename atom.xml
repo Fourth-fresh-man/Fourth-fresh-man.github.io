@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wangbichao.com</id>
     <title>个人博客</title>
-    <updated>2021-02-05T08:15:27.092Z</updated>
+    <updated>2021-02-07T08:54:20.392Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wangbichao.com"/>
     <link rel="self" href="https://wangbichao.com/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://wangbichao.com/images/avatar.png</logo>
     <icon>https://wangbichao.com/favicon.ico</icon>
     <rights>All rights reserved 2021, 个人博客</rights>
+    <entry>
+        <title type="html"><![CDATA[linus大神的主机配置，参考一下😁]]></title>
+        <id>https://wangbichao.com/post/linus-da-shen-de-zhu-ji-pei-zhi-can-kao-yi-xia/</id>
+        <link href="https://wangbichao.com/post/linus-da-shen-de-zhu-ji-pei-zhi-can-kao-yi-xia/">
+        </link>
+        <updated>2021-02-07T08:16:04.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[n个骰子的点数]]></title>
         <id>https://wangbichao.com/post/n-ge-tou-zi-de-dian-shu/</id>
@@ -61,17 +68,6 @@
         <summary type="html"><![CDATA[<p>shell是我在实习时候经常会用的语言，一般在项目提供部署，领导要求一些好看的报表时候用的比较多，目前我用shell大概3个月，只会用一些很普通的命令，其实在网上查阅资料的时候就发现了shell许多nb的用法，特此一一记录下来。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>shell是我在实习时候经常会用的语言，一般在项目提供部署，领导要求一些好看的报表时候用的比较多，目前我用shell大概3个月，只会用一些很普通的命令，其实在网上查阅资料的时候就发现了shell许多nb的用法，特此一一记录下来。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Leetcode刷题 - 05 替换空格]]></title>
-        <id>https://wangbichao.com/post/leetcode05/</id>
-        <link href="https://wangbichao.com/post/leetcode05/">
-        </link>
-        <updated>2020-12-12T09:00:44.000Z</updated>
-        <summary type="html"><![CDATA[<p>实现一个函数，把字符串s中的每个空格替换成“%20”</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>实现一个函数，把字符串s中的每个空格替换成“%20”</p>
 ]]></content>
     </entry>
 </feed>
